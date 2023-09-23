@@ -1,3 +1,4 @@
+'use client';
 import CountriesGrid from './countries-grid';
 import styles from './all-countries.module.scss';
 import { country } from '@/utils/types';

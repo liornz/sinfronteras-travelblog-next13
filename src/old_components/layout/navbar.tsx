@@ -53,7 +53,7 @@ const Navbar: React.FC<Props> = ({ lng, show, isMobile, toggle }) => {
       </li>
       <li onClick={toggle}>
         <Trans i18nKey="languageSwitcher" t={t}>
-          <Link className={styles.button} href={lng === 'en' ? '/es' : '/en'}>
+          <Link className={styles.button} href={lng === 'en' ? pathname.replace('/en', '/es') : pathname.replace('/es', '/en')}>
             {lng === 'en' ? 'ESP' : 'ENG'}
           </Link>
         </Trans>

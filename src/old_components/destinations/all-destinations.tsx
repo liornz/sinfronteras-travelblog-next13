@@ -1,3 +1,4 @@
+'use client';
 import DestinationsGrid from '../destinations/destinations-grid';
 import styles from './all-destinations.module.scss';
 import { post, country } from '../../utils/types';
