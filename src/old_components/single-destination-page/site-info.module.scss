@@ -1,0 +1,20 @@
+@use '../../../styles/variables';
+
+.container {
+  background-color: variables.$color-background;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90vw;
+  margin: auto;
+  @media (min-width: 600px) {
+    max-width: 80rem;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
