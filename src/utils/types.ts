@@ -1,3 +1,5 @@
+import { Document, ObjectId, WithId } from 'mongodb';
+
 export type location = {
   lat: number;
   lng: number;
@@ -32,12 +34,12 @@ export type postMetaData = {
   zoom: number;
 };
 
-export type commentData = {
-  _id: string;
+export interface commentData extends WithId<Document> {
+  _id: ObjectId;
   email: string;
   name: string;
   text: string;
-};
+}
 
 export type enteredCommentData = {
   email: string;
@@ -51,7 +53,7 @@ export type countryMetaData = {
   flagBlurDataURL: string;
   image: string;
   blurDataURL: string;
-}
+};
 
 export type country = {
   slug: string;

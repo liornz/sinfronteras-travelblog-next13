@@ -4,6 +4,7 @@
   "name": "Tu Nombre",
   "comment": "Tu Comentario",
   "button": "Enviar",
+  "submitting": "Enviando...",
   "list-title": "Comentarios",
   "validate": "¡Ingrese entradas válidas!"
 }

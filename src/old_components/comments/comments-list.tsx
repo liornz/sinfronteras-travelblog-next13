@@ -1,18 +1,18 @@
-import { Fragment } from 'react';
 import Spinner from '../../old_components/ui/spinner';
 import { commentData } from '../../utils/types';
 import styles from './comments-list.module.scss';
-import { useTranslation } from '../../app/i18n/client';
+import { useTranslation } from '../../app/i18n';
 
 interface Props {
   comments: commentData[];
-  isLoading: boolean;
+  // isLoading: boolean;
   lng: string;
 }
 
-const CommentsList: React.FC<Props> = (props) => {
-  const { comments, isLoading, lng } = props;
-  const { t } = useTranslation(lng, 'comments');
+const CommentsList: React.FC<Props> = async (props) => {
+  const { comments, lng } = props;
+  const { t } = await useTranslation(lng, 'comments');
+  const isLoading = false;
   function title() {
     if (isLoading) {
       return <Spinner />;
@@ -33,7 +33,7 @@ const CommentsList: React.FC<Props> = (props) => {
       return (
         <ul className={styles.comments}>
           {comments.map((comment) => (
-            <li key={comment._id} className={styles.comment}>
+            <li key={comment._id.toString()} className={styles.comment}>
               <div>
                 <p className={styles.name}>
                   <strong>{comment.name}</strong>
@@ -48,10 +48,10 @@ const CommentsList: React.FC<Props> = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       {title()}
       {commentsList()}
-    </Fragment>
+    </>
   );
 };
 

@@ -4,6 +4,7 @@
   "name": "Your Name",
   "comment": "Your Comment",
   "button": "Submit",
+  "submitting": "Submitting...",
   "list-title": "Comments",
   "validate": "Please enter valid inputs!"
 }
