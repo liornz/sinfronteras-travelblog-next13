@@ -22,7 +22,7 @@ const Navbar: React.FC<Props> = ({ lng, show, isMobile, toggle }) => {
         <Link
           href="/destinations"
           style={{
-            color: pathname === '/destinations' ? 'rgb(240,150,37)' : '',
+            color: pathname.split('/')[2] === 'destinations' ? 'rgb(240,150,37)' : '',
           }}
         >
           {t('destinations')}
@@ -33,7 +33,7 @@ const Navbar: React.FC<Props> = ({ lng, show, isMobile, toggle }) => {
         <Link
           href="/shop"
           style={{
-            color: pathname === '/shop' ? 'rgb(240,150,37)' : '',
+            color: pathname.split('/')[2] === 'shop' ? 'rgb(240,150,37)' : '',
           }}
         >
           {t('shop')}
@@ -44,7 +44,7 @@ const Navbar: React.FC<Props> = ({ lng, show, isMobile, toggle }) => {
         <Link
           href="/contact"
           style={{
-            color: pathname === '/contact' ? 'rgb(240,150,37)' : '',
+            color: pathname.split('/')[2] === 'contact' ? 'rgb(240,150,37)' : '',
           }}
         >
           {t('contact')}

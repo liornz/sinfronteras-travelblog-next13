@@ -1,13 +1,13 @@
 import styles from './shop.module.scss';
-import { useTranslation } from '../../app/i18n/client';
+import { useTranslation } from '../../app/i18n';
 
 interface Props {
   lng: string;
 }
 
-const Shop: React.FC<Props> = (props) => {
+const Shop: React.FC<Props> = async (props) => {
   const { lng } = props;
-  const { t } = useTranslation(lng, 'shop');
+  const { t } = await useTranslation(lng, 'shop');
 
   return (
     <div className={styles.container}>

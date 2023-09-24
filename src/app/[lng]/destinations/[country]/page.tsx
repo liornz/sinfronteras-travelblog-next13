@@ -29,5 +29,7 @@ export default DestinationsPerCountry;
 export async function generateStaticParams() {
   const countryFileNames = getCountryFileNames('en');
   const countriesArray = countryFileNames.map((fileName) => fileName.replace(/\.md$/, ''));
-  return countriesArray.map((country) => ({ country }));
+  const pathsEN = countriesArray.map((country) => ({ country, lng: 'en' }));
+  const pathsES = countriesArray.map((country) => ({ country, lng: 'es' }));
+  return [...pathsEN, ...pathsES];
 }

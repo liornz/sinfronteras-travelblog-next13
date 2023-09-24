@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import styles from './contact.module.scss';
 import { enteredMessageData } from '../../utils/types';

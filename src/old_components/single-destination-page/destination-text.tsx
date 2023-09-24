@@ -1,3 +1,4 @@
+'use client';
 import MarkDown from 'react-markdown';
 import styles from './destination-text.module.scss';
 import { useTranslation } from '../../app/i18n/client';

@@ -12,7 +12,7 @@ import '../../../styles/globals.scss';
 import MainHeader from '@/old_components/layout/main-header';
 import Footer from '@/old_components/footer/footer';
 
-const lato = Lato({ subsets: ['latin'], weight: '400' });
+const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: 'Sin Fronteras - Video Travel Blog',
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'l0w2h2JQOHdnGVdvB0UqUOHAon8XxS24IlkTFJOqXN0',
   },
+  metadataBase: new URL('https://sinfronteras-travelblog.com/'),
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
-  manifest: '/manifest.json',
+  // manifest: '/manifest.json',
 };
 
 type RootLayoutProps = {
@@ -44,7 +45,7 @@ export default function RootLayout({ children, params: { lng } }: RootLayoutProp
     <html lang={lng} dir={dir(lng)}>
       <body className={lato.className}>
         <MainHeader lng={lng} />
-        <main>{children}</main>
+        <main style={{ marginTop: '5rem' }}>{children}</main>
         <Footer lng={lng} />
       </body>
     </html>

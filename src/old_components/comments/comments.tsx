@@ -1,3 +1,4 @@
+'use client';
 import { useState, useContext, useEffect, useCallback } from 'react';
 import NewComment from './new-comment';
 import CommentList from './comments-list';
