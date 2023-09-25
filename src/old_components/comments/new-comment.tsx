@@ -5,6 +5,7 @@ import styles from './new-comment.module.scss';
 import { useTranslation } from '../../app/i18n/client';
 import { addComment } from '@/actions/comments';
 import Button from './button';
+import { toast } from 'react-toastify';
 
 interface Props {
   lng: string;
@@ -21,7 +22,7 @@ const NewComment: React.FC<Props> = (props) => {
     ref.current?.reset();
     const result = await addComment(formData, countrySlug, destinationSlug, lng);
     if (result?.error instanceof Error) {
-      alert(result.error.message); // TODO: replace with toast
+      toast(result.error.message);
     }
   };
 

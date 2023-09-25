@@ -5,5 +5,7 @@
   "newsletter-sub": "Unete a esta comunidad para recibir información y consejos útiles",
   "placeholder": "Correo Electrónico",
   "button": "JUNTAR",
-  "validate": "¡Ingrese entradas válidas!"
+  "validate": "¡Ingrese entradas válidas!",
+  "invalid": "Email inválido",
+  "success": "¡Gracias por suscribirte!"
 }

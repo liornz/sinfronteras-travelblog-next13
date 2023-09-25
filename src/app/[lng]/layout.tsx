@@ -11,6 +11,8 @@ export async function generateStaticParams() {
 import '../../../styles/globals.scss';
 import MainHeader from '@/old_components/layout/main-header';
 import Footer from '@/old_components/footer/footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -47,6 +49,7 @@ export default function RootLayout({ children, params: { lng } }: RootLayoutProp
         <MainHeader lng={lng} />
         <main style={{ marginTop: '5rem' }}>{children}</main>
         <Footer lng={lng} />
+        <ToastContainer />
       </body>
     </html>
   );

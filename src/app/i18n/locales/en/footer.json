@@ -5,5 +5,7 @@
   "newsletter-sub": "Join our community to receive useful information and tips",
   "placeholder": "Email Address",
   "button": "JOIN",
-  "validate": "Enter valid Email!"
+  "validate": "Enter valid Email!",
+  "invalid": "Invalid Email!",
+  "success": "Thank you for subscribing!"
 }
