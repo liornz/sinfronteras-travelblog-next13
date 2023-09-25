@@ -4,5 +4,8 @@
   "name": "Tu Nombre",
   "message": "Tu Commentario",
   "button": "Enviar",
-  "validate": "¡Ingrese entradas válidas!"
+  "validate": "¡Ingrese entradas válidas!",
+  "submitting": "Enviando...",
+  "invalid": "¡Entradas inválidas!",
+  "success": "¡Gracias por tu mensaje!"
 }

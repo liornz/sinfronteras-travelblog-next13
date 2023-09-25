@@ -4,5 +4,8 @@
   "name": "Your Name",
   "message": "Your Message",
   "button": "Submit",
-  "validate": "Please enter valid inputs!"
+  "validate": "Please enter valid inputs!",
+  "submitting": "Submitting...",
+  "invalid": "Invalid input!",
+  "success": "Thank you for your message!"
 }
