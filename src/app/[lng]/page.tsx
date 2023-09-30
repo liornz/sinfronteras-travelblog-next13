@@ -14,7 +14,7 @@ export default function Page({ params: { lng } }: { params: { lng: string } }) {
       <VideoOpening />
       <Hero lng={lng} />
       <AllCountries countries={countries} lng={lng} />
-      <FeaturedDestinations destinations={featuredPosts as post[]} lng={lng} />
+      <FeaturedDestinations destinations={featuredPosts} lng={lng} />
     </>
   );
 }

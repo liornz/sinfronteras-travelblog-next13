@@ -3,7 +3,7 @@ import 'server-only';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { postMetaData, countryMetaData } from './types';
+import { postMetaData, countryMetaData, post } from './types';
 
 const enContryDataDirectory = path.join(process.cwd(), 'src', 'data', 'countries-data', 'en');
 const esCountryDataDirectory = path.join(process.cwd(), 'src', 'data', 'countries-data', 'es');
@@ -98,7 +98,7 @@ export function getDestinationsPerCountry(country: string, locale: string) {
 export function getFeaturedDestinations(locale: string) {
   const countryFileNames = getCountryFileNames(locale);
   const countrySlugs = countryFileNames.map((fileName) => fileName.replace(/\.md$/, ''));
-  let allDestinationData: postMetaData[] = [];
+  let allDestinationData: post[] = [];
   for (const country of countrySlugs) {
     const destinations = getDestinationsPerCountry(country, locale);
     allDestinationData = allDestinationData.concat(destinations);
