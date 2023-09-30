@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { postMetaData, countryMetaData, post } from './types';
+import { notFound } from 'next/navigation';
 
 const enContryDataDirectory = path.join(process.cwd(), 'src', 'data', 'countries-data', 'en');
 const esCountryDataDirectory = path.join(process.cwd(), 'src', 'data', 'countries-data', 'es');
@@ -12,13 +13,25 @@ export function getCountryFileNames(locale: string) {
   let dataFiles;
   switch (locale) {
     case 'en':
-      dataFiles = fs.readdirSync(enContryDataDirectory);
+      try {
+        dataFiles = fs.readdirSync(enContryDataDirectory);
+      } catch {
+        return notFound();
+      }
       return dataFiles;
     case 'es':
-      dataFiles = fs.readdirSync(esCountryDataDirectory);
+      try {
+        dataFiles = fs.readdirSync(enContryDataDirectory);
+      } catch {
+        return notFound();
+      }
       return dataFiles;
     default:
-      dataFiles = fs.readdirSync(enContryDataDirectory);
+      try {
+        dataFiles = fs.readdirSync(enContryDataDirectory);
+      } catch {
+        return notFound();
+      }
       return dataFiles;
   }
 }
@@ -36,7 +49,12 @@ export function getCountryFileData(fileIdentifier: string, locale: string) {
     default:
       filePath = path.join(enContryDataDirectory, `${countrySlug}.md`);
   }
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  let fileContent = '';
+  try {
+    fileContent = fs.readFileSync(filePath, 'utf-8');
+  } catch {
+    return notFound();
+  }
   const { data, content } = matter(fileContent);
 
   const countryData = {
@@ -66,7 +84,12 @@ export function getFileData(country: string, locale: string, fileIdentifier: str
   const directory = buildCountryDirectory(country, locale);
   const fileSlug = fileIdentifier.replace(/\.md$/, '');
   const filePath = path.join(directory, `${fileSlug}.md`);
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  let fileContent = '';
+  try {
+    fileContent = fs.readFileSync(filePath, 'utf-8');
+  } catch {
+    return notFound();
+  }
   const { data, content } = matter(fileContent);
 
   const postData = {
@@ -80,15 +103,24 @@ export function getFileData(country: string, locale: string, fileIdentifier: str
 
 export function getFileNamesPerCountry(country: string, locale: string) {
   const directory = buildCountryDirectory(country, locale);
-
-  const fileNames = fs.readdirSync(directory);
+  let fileNames: string[] = [];
+  try {
+    fileNames = fs.readdirSync(directory);
+  } catch {
+    return notFound();
+  }
   return fileNames;
 }
 
 export function getDestinationsPerCountry(country: string, locale: string) {
   const directory = buildCountryDirectory(country, locale);
 
-  const fileNames = fs.readdirSync(directory);
+  let fileNames: string[] = [];
+  try {
+    fileNames = fs.readdirSync(directory);
+  } catch {
+    return notFound();
+  }
   const filesData = fileNames.map((file) => {
     return getFileData(country, locale, file);
   });
