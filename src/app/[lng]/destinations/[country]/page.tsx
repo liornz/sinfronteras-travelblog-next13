@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AllDestinations from '../../../../old_components/destinations/all-destinations';
 import { getCountryFileData, getCountryFileNames, getDestinationsPerCountry } from '../../../../utils/data-utils';
 import { Metadata } from 'next';

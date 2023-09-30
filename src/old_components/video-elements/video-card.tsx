@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import VideoDisplay from "./video-display";
-import styles from "./video-card.module.scss";
-import { FaPlay } from "react-icons/fa";
+'use client';
+
+import React, { useState } from 'react';
+import Image from 'next/image';
+import VideoDisplay from './video-display';
+import styles from './video-card.module.scss';
+import { FaPlay } from 'react-icons/fa';
 
 interface Props {
   youtubeId: string;
@@ -18,8 +20,7 @@ interface Props {
 }
 
 const VideoCard: React.FC<Props> = (props) => {
-  const { youtubeId, imagePath, imgAlt, text, imageBlur, width, height } =
-    props;
+  const { youtubeId, imagePath, imgAlt, text, imageBlur, width, height } = props;
   const [videoDisplayOn, setVideoDisplayOn] = useState(false);
   const videoDisplayHandler = () => {
     setVideoDisplayOn((currState) => !currState);
@@ -45,7 +46,7 @@ const VideoCard: React.FC<Props> = (props) => {
             alt={imgAlt}
             width={width}
             height={height}
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: '100%', height: 'auto' }}
             sizes="(max-width: 745px) 100vw,
             50vw"
             placeholder="blur"
@@ -57,11 +58,7 @@ const VideoCard: React.FC<Props> = (props) => {
         </div>
         {textSection}
       </div>
-      <VideoDisplay
-        show={videoDisplayOn}
-        toggle={videoDisplayHandler}
-        youtubeId={youtubeId}
-      />
+      <VideoDisplay show={videoDisplayOn} toggle={videoDisplayHandler} youtubeId={youtubeId} />
     </>
   );
 };

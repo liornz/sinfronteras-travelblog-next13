@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import YouTube, { YouTubeProps } from "react-youtube";
-import styles from "./video-display.module.scss";
-import Backdrop from "./backdrop";
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import YouTube, { YouTubeProps } from 'react-youtube';
+import styles from './video-display.module.scss';
+import Backdrop from './backdrop';
 
 interface Props {
   show: boolean;
@@ -22,7 +24,7 @@ const VideoDisplay: React.FC<Props> = (props) => {
       setHeight((window.innerWidth * 30) / 100);
     }
   }, []);
-  const opts: YouTubeProps["opts"] = {
+  const opts: YouTubeProps['opts'] = {
     height,
     width,
     playerVars: {
@@ -39,12 +41,7 @@ const VideoDisplay: React.FC<Props> = (props) => {
   const render = show ? (
     <div>
       <Backdrop toggle={toggle} />
-      <YouTube
-        className={styles.Video}
-        videoId={youtubeId}
-        opts={opts}
-        onReady={_onReady}
-      />
+      <YouTube className={styles.Video} videoId={youtubeId} opts={opts} onReady={_onReady} />
     </div>
   ) : null;
 

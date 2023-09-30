@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { getCountryFileNames, getFileData, getFileNamesPerCountry } from '../../../../../utils/data-utils';
 import React, { Fragment } from 'react';
 
