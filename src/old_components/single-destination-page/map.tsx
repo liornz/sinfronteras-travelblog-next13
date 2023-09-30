@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import styles from './map.module.scss';
+import { Loader } from '@googlemaps/js-api-loader';
 
 interface Props {
   location:
@@ -20,36 +21,21 @@ interface Props {
 const Map: React.FC<Props> = (props) => {
   const { location, width, height, zoom, minWidth, minHeight, google_api } = props;
   useEffect(() => {
-    if (window.google === undefined) {
-      const s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.src = `https://maps.google.com/maps/api/js?key=${google_api}`;
-      const x = document.getElementsByTagName('script')[0];
-      x.parentNode?.insertBefore(s, x);
-      s.addEventListener('load', () => {
-        if (location !== undefined) {
-          const map = new google.maps.Map(document.getElementById('map')! as HTMLDivElement, {
-            center: location,
-            zoom: zoom,
-          });
-          new google.maps.Marker({
-            position: location,
-            map: map,
-          });
-        }
+    const loader = new Loader({
+      apiKey: google_api,
+      version: 'weekly',
+    });
+    loader.importLibrary('maps').then(async () => {
+      const { Map } = (await google.maps.importLibrary('maps')) as google.maps.MapsLibrary;
+      const map = new Map(document.getElementById('map') as HTMLElement, {
+        center: location,
+        zoom: zoom,
       });
-    } else {
-      if (location !== undefined) {
-        const map = new google.maps.Map(document.getElementById('map')! as HTMLDivElement, {
-          center: location,
-          zoom: zoom,
-        });
-        new google.maps.Marker({
-          position: location,
-          map: map,
-        });
-      }
-    }
+      new google.maps.Marker({
+        map: map,
+        position: location,
+      });
+    });
   }, [google_api, location, zoom]);
 
   return (
