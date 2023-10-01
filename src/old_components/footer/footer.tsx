@@ -6,11 +6,12 @@ import styles from './footer.module.scss';
 
 type FooterProps = {
   lng: string;
+  drawerWidth: number;
 };
 
-const Footer: React.FC<FooterProps> = ({ lng }) => {
+const Footer: React.FC<FooterProps> = ({ lng, drawerWidth }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ width: 'calc(100% - 240px)', marginLeft: `${drawerWidth}px` }}>
       <ExtendedLogo lng={lng} />
       <MenuItems lng={lng} />
       <SocialMedia />

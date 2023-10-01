@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const siteData = getFileData(country, lng, site);
 
   return {
-    title: siteData.title,
+    title: `Sinfronteras - ${siteData.title}`,
     description: `Sinfronteras Travel Blog - ${siteData.title}`,
   };
 }
