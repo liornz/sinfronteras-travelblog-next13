@@ -1,6 +1,7 @@
 {
-  "destinations": "DESTINOS",
-  "shop": "TIENDA",
-  "contact": "CONTACTO",
+  "destinations": "Destinos",
+  "shop": "Tienda",
+  "contact": "Contacto",
+  "home": "Inicio",
   "lang": "ENG"
 }

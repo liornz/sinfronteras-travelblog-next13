@@ -1,6 +1,7 @@
 {
-  "destinations": "DESTINATIONS",
-  "shop": "SHOP",
-  "contact": "CONTACT",
+  "destinations": "Destinations",
+  "shop": "Shop",
+  "contact": "Contact",
+  "home": "Home",
   "lang": "ESP"
 }

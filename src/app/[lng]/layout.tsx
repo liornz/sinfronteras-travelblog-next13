@@ -13,7 +13,7 @@ import Footer from '@/old_components/footer/footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SideDrawer from '@/old_components/layout/sideDrawer';
-import { getCountryFileNames, getFileNamesPerCountry } from '@/utils/data-utils';
+import { getAllCountriesData, getCountryFileNames, getFileNamesPerCountry } from '@/utils/data-utils';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -46,16 +46,12 @@ type RootLayoutProps = {
 const drawerWidth = 240;
 
 export default function RootLayout({ children, params: { lng } }: RootLayoutProps) {
-  const countries = getCountryFileNames('en');
-  const destinations = countries.map((country) => ({
-    countryName: country.replace(/\.md$/, ''),
-    destinations: getFileNamesPerCountry(country.replace(/\.md$/, ''), 'en').map((fileName) => fileName.replace(/\.md$/, '')),
-  }));
+  const countries = getAllCountriesData(lng);
+  const countriesData = countries.map((country) => ({ name: country.name, slug: country.slug }));
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={lato.className}>
-        {/* <MainHeader lng={lng} /> */}
-        <SideDrawer destinations={destinations} drawerWidth={drawerWidth}>
+        <SideDrawer lng={lng} countriesData={countriesData} drawerWidth={drawerWidth}>
           {children}
         </SideDrawer>
         <Footer drawerWidth={drawerWidth} lng={lng} />

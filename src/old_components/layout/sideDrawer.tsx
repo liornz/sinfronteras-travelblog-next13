@@ -18,22 +18,26 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import PlaceIcon from '@mui/icons-material/Place';
 import ExploreIcon from '@mui/icons-material/Explore';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import LanguageIcon from '@mui/icons-material/Language';
 import Toolbar from '@mui/material/Toolbar';
 import Logo from './logo';
 import Link from 'next/link';
+import { Trans } from 'react-i18next/TransWithoutContext';
+import { useTranslation } from '../../app/i18n/client';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   children: React.ReactNode;
   drawerWidth: number;
-  destinations: {
-    countryName: string;
-    destinations: string[];
-  }[];
+  countriesData: { name: string; slug: string }[];
+  lng: string;
 }
 
 export default function SideDrawer(props: Props) {
-  const { children, destinations, drawerWidth } = props;
+  const { children, countriesData, drawerWidth, lng } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { t } = useTranslation(lng, 'nav');
+  const pathname = usePathname();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -59,12 +63,12 @@ export default function SideDrawer(props: Props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Home', 'Destinations', 'Shop', 'Contact'].map((text, index) => (
+        {['Home', 'Destinations', 'Shop', 'Contact'].map((text) => (
           <ListItem key={text} disablePadding>
             <Link href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}>
               <ListItemButton>
                 <ListItemIcon>{mainIcon(text)}</ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={t(text.toLowerCase())} />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -72,18 +76,31 @@ export default function SideDrawer(props: Props) {
       </List>
       <Divider />
       <List>
-        {destinations.map(({ countryName, destinations: sites }) => (
-          <ListItem key={countryName} disablePadding>
-            <Link href={`/destinations/${countryName.toLowerCase()}`}>
+        {countriesData.map(({ name, slug }) => (
+          <ListItem key={name} disablePadding>
+            <Link href={`/destinations/${slug.toLowerCase()}`}>
               <ListItemButton>
                 <ListItemIcon>
                   <ExploreIcon />
                 </ListItemIcon>
-                <ListItemText primary={countryName[0].toUpperCase() + countryName.slice(1)} />
+                <ListItemText primary={name[0].toUpperCase() + name.slice(1)} />
               </ListItemButton>
             </Link>
           </ListItem>
         ))}
+        <Divider />
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <LanguageIcon />
+            </ListItemIcon>
+            <Trans i18nKey="languageSwitcher" t={t}>
+              <Link href={lng === 'en' ? pathname.replace('/en', '/es') : pathname.replace('/es', '/en')}>
+                {lng === 'en' ? 'ESP' : 'ENG'}
+              </Link>
+            </Trans>
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
