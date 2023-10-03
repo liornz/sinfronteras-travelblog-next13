@@ -1,16 +1,15 @@
-'use client';
 import MarkDown from 'react-markdown';
 import styles from './destination-text.module.scss';
-import { useTranslation } from '../../app/i18n/client';
+import { useTranslation } from '../../app/i18n';
 
 interface Props {
   text: string;
   lng: string;
 }
 
-const DestinationText: React.FC<Props> = (props) => {
+const DestinationText: React.FC<Props> = async (props) => {
   const { text, lng } = props;
-  const { t } = useTranslation(lng, 'destination');
+  const { t } = await useTranslation(lng, 'destination');
 
   return (
     <div className={styles.text}>

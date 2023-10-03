@@ -1,15 +1,13 @@
-'use client';
-
 import VideoCard from '../video-elements/video-card';
 import styles from './hero.module.scss';
-import { useTranslation } from '../../app/i18n/client';
+import { useTranslation } from '../../app/i18n';
 
 interface Props {
   lng: string;
 }
 
-const Hero: React.FC<Props> = ({ lng }) => {
-  const { t } = useTranslation(lng, 'common');
+const Hero: React.FC<Props> = async ({ lng }) => {
+  const { t } = await useTranslation(lng, 'common');
 
   const aboutText = (
     <p className={styles.lead}>
