@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
-  // manifest: '/manifest.json',
+  manifest: '/manifest.json',
 };
 
 type RootLayoutProps = {
