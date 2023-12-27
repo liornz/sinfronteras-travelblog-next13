@@ -6,7 +6,7 @@ export const register = async (email: string) => {
   let client;
   try {
     client = await connectDatabase();
-    await insertDucument(client, 'newsletter', { email });
+    await insertDucument(client, 'newsletter', { email, date: new Date() });
   } catch (error) {
     return {
       error,

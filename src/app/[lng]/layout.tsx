@@ -1,5 +1,5 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Lato } from 'next/font/google';
 import { dir } from 'i18next';
 import { languages } from '../i18n/settings';
@@ -25,18 +25,19 @@ export const metadata: Metadata = {
     google: 'l0w2h2JQOHdnGVdvB0UqUOHAon8XxS24IlkTFJOqXN0',
   },
   metadataBase: new URL('https://sinfronteras-travelblog.com/'),
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover',
-    minimumScale: 1,
-  },
-  themeColor: '#000000',
   formatDetection: {
     telephone: false,
   },
   manifest: '/manifest.json',
 };
+
+export const viewport: Viewport = {
+  themeColor: 'black',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  maximumScale: 1,
+}
 
 type RootLayoutProps = {
   children: React.ReactNode;
