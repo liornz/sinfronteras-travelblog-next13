@@ -1,6 +1,6 @@
 import styles from './contact.module.scss';
 import { useTranslation } from '../../app/i18n/client';
-import { experimental_useFormStatus as useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 
 type Props = {
   lng: string;
