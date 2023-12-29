@@ -10,10 +10,10 @@ const Hero: React.FC<Props> = async ({ lng }) => {
   const { t } = await useTranslation(lng, 'common');
 
   const aboutText = (
-    <p className={styles.lead}>
-      <strong>{t('metitle')}</strong>
-      {t('metext')}
-    </p>
+    <span className={styles.lead}>
+        <strong>{t('metitle')}</strong>
+        {t('metext')}
+    </span>
   );
 
   return (

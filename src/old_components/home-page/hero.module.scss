@@ -32,6 +32,10 @@
 .AboutVideo {
   flex: 1;
   cursor: pointer;
+  animation: appear linear forwards;
+  animation-timeline: view();
+  animation-range-start: cover;
+  animation-range-end: contain 15vh;
   @media (min-width: 992px) {
     max-width: 50%;
     margin: 0 0 0 1rem;
@@ -43,8 +47,31 @@
 }
 
 .lead {
+  margin: 0;
   line-height: 1.5;
   font-size: 1.25rem;
-  color: rgba(0, 0, 0, 0.6);
-  margin: 0;
+  color: rgba(0, 0, 0, 0.0);
+  background-clip: text;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  animation: scroll-reveal linear forwards;
+  animation-timeline: view();
+  animation-range-start: cover;
+  animation-range-end: contain 15vh;
+}
+
+@keyframes scroll-reveal {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
