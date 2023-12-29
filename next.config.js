@@ -9,9 +9,6 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = withPWA({
-  experimental: {
-    serverActions: true,
-  },
 });
 
 module.exports = nextConfig;
