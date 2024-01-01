@@ -13,7 +13,7 @@ import Footer from '@/old_components/footer/footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SideDrawer from '@/old_components/layout/sideDrawer';
-import { getAllCountriesData, getCountryFileNames, getFileNamesPerCountry } from '@/utils/data-utils';
+import { getAllCountriesData } from '@/utils/data-utils';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 

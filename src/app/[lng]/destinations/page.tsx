@@ -3,7 +3,6 @@ import AllCountries from '../../../old_components/destinations/countries/all-cou
 import { country } from '../../../utils/types';
 import { getAllCountriesData } from '../../../utils/data-utils';
 import React from 'react';
-import Head from 'next/head';
 
 interface Props {
   params: { lng: string };

@@ -5,7 +5,6 @@ import { useTranslation } from '../../app/i18n/client';
 import Button from './button';
 import { contact } from '@/actions/contact';
 import { toast } from 'react-toastify';
-import { ZodError } from 'zod';
 
 type Props = {
   lng: string;
