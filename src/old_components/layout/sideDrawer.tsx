@@ -156,7 +156,7 @@ export default function SideDrawer(props: Props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, pt: 7, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
+      <Box component="main" sx={{ flexGrow: 1, pt: 7, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
         {children}
       </Box>
     </Box>
