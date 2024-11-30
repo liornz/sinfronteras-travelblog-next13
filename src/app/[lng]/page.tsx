@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default async function Page({ params }: Props) {
-  const lng = (await params).lng;
+  const { lng } = await params;
   const featuredPosts = getFeaturedDestinations(lng);
   const countries = getAllCountriesData(lng);
 

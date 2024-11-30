@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const ShopPage: React.FC<Props> = async ({ params }) => {
-  const lng = (await params).lng;
+  const { lng } = await params;
   return <Shop lng={lng} />;
 };
 

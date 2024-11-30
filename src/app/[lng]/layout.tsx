@@ -47,7 +47,7 @@ type RootLayoutProps = {
 const drawerWidth = 240;
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-  const lng = (await params).lng;
+  const { lng } = await params;
   const countries = getAllCountriesData(lng);
   const countriesData = countries.map((country) => ({ name: country.name, slug: country.slug }));
   return (
