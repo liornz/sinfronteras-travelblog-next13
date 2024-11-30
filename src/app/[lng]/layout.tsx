@@ -1,19 +1,19 @@
-import './globals.css';
+import { dir } from 'i18next';
 import type { Metadata, Viewport } from 'next';
 import { Lato } from 'next/font/google';
-import { dir } from 'i18next';
 import { languages } from '../i18n/settings';
+import './globals.css';
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-import '../../../styles/globals.scss';
 import Footer from '@/old_components/footer/footer';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import SideDrawer from '@/old_components/layout/sideDrawer';
 import { getAllCountriesData } from '@/utils/data-utils';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../../../styles/globals.scss';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -37,16 +37,17 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: 'cover',
   maximumScale: 1,
-}
+};
 
 type RootLayoutProps = {
   children: React.ReactNode;
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 };
 
 const drawerWidth = 240;
 
-export default function RootLayout({ children, params: { lng } }: RootLayoutProps) {
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+  const lng = (await params).lng;
   const countries = getAllCountriesData(lng);
   const countriesData = countries.map((country) => ({ name: country.name, slug: country.slug }));
   return (
