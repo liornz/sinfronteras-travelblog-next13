@@ -1,7 +1,9 @@
+'use client';
+
+import { useTranslation } from '../../app/i18n/client';
 import Spinner from '../../old_components/ui/spinner';
 import { commentData } from '../../utils/types';
 import styles from './comments-list.module.scss';
-import { useTranslation } from '../../app/i18n';
 
 interface Props {
   comments: commentData[];
@@ -9,9 +11,9 @@ interface Props {
   lng: string;
 }
 
-const CommentsList: React.FC<Props> = async (props) => {
+const CommentsList: React.FC<Props> = (props) => {
   const { comments, lng } = props;
-  const { t } = await useTranslation(lng, 'comments');
+  const { t } = useTranslation(lng, 'comments');
   const isLoading = false;
   function title() {
     if (isLoading) {

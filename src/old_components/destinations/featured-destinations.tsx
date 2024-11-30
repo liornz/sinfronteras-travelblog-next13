@@ -1,15 +1,18 @@
-import { useTranslation } from '../../app/i18n';
+'use client';
+
+import { useTranslation } from '../../app/i18n/client';
+import { post } from '../../utils/types';
 import DestinationsGrid from '../destinations/destinations-grid';
 import styles from './featured-destinations.module.scss';
-import { post } from '../../utils/types';
 
 interface Props {
   destinations: post[];
   lng: string;
 }
 
-const FeaturedDestinations: React.FC<Props> = async ({ destinations, lng }) => {
-  const { t } = await useTranslation(lng, 'common');
+const FeaturedDestinations: React.FC<Props> = (props) => {
+  const { destinations, lng } = props;
+  const { t } = useTranslation(lng, 'common');
 
   return (
     <>

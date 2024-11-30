@@ -1,13 +1,13 @@
+import { Metadata } from 'next';
 import AllDestinations from '../../../../old_components/destinations/all-destinations';
 import { getCountryFileData, getCountryFileNames, getDestinationsPerCountry } from '../../../../utils/data-utils';
-import { Metadata } from 'next';
 
 interface Props {
-  params: { lng: string; country: string };
+  params: Promise<{ lng: string; country: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { country, lng } = params;
+  const { country, lng } = await params;
   const countryData = getCountryFileData(country, lng);
 
   return {
@@ -16,7 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const DestinationsPerCountry: React.FC<Props> = ({ params: { lng, country } }) => {
+const DestinationsPerCountry: React.FC<Props> = async ({ params }) => {
+  const { lng, country } = await params;
   const countryData = getCountryFileData(country, lng);
   const destinations = getDestinationsPerCountry(country, lng);
   return <AllDestinations lng={lng} destinations={destinations} country={countryData} />;

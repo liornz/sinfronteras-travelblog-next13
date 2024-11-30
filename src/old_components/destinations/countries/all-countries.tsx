@@ -1,15 +1,18 @@
-import CountriesGrid from './countries-grid';
-import styles from './all-countries.module.scss';
+'use client';
+
 import { country } from '@/utils/types';
-import { useTranslation } from '../../../app/i18n';
+import { useTranslation } from '../../../app/i18n/client';
+import styles from './all-countries.module.scss';
+import CountriesGrid from './countries-grid';
 
 interface Props {
   countries: country[];
   lng: string;
 }
 
-const AllCountries: React.FC<Props> = async ({ countries, lng }) => {
-  const { t } = await useTranslation(lng, 'common');
+const AllCountries: React.FC<Props> = (props) => {
+  const { countries, lng } = props;
+  const { t } = useTranslation(lng, 'common');
 
   return (
     <div>

@@ -9,6 +9,9 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = withPWA({
+  experimental: {
+    turbo: {},
+  },
 });
 
 module.exports = nextConfig;

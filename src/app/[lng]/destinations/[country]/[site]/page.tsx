@@ -1,19 +1,16 @@
 import { getCountryFileNames, getFileData, getFileNamesPerCountry } from '../../../../../utils/data-utils';
-import React, { Fragment } from 'react';
 
+import CommentsContainer from '@/old_components/comments/comments-container';
+import { Metadata } from 'next';
 import SelectedVideo from '../../../../../old_components/single-destination-page/selected-video';
 import SiteInfo from '../../../../../old_components/single-destination-page/site-info';
-import Comments from '../../../../../old_components/comments/comments';
-import { post } from '../../../../../utils/types';
-import Head from 'next/head';
-import { Metadata } from 'next';
 
 interface Props {
-  params: { lng: string; country: string; site: string };
+  params: Promise<{ lng: string; country: string; site: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { country, site, lng } = params;
+  const { country, site, lng } = await params;
   const siteData = getFileData(country, lng, site);
 
   return {
@@ -22,10 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const SingleDestinationPage: React.FC<Props> = (props) => {
-  const {
-    params: { lng, country, site },
-  } = props;
+const SingleDestinationPage: React.FC<Props> = async ({ params }) => {
+  const { lng, country, site } = await params;
 
   const siteData = getFileData(country, lng, site);
 
@@ -39,7 +34,7 @@ const SingleDestinationPage: React.FC<Props> = (props) => {
         zoom={siteData.zoom}
         google_api={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}
       />
-      <Comments lng={lng} destinationSlug={site} countrySlug={country} />
+      <CommentsContainer lng={lng} destinationSlug={site} countrySlug={country} />
     </>
   );
 };

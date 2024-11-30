@@ -1,15 +1,18 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/images/logo/logo_sinfronteras-417x150.png';
-import { useTranslation } from '../../app/i18n';
+import { useTranslation } from '../../app/i18n/client';
 import styles from './extended-logo.module.scss';
 
 type ExtendedLogoProps = {
   lng: string;
 };
 
-const ExtendedLogo: React.FC<ExtendedLogoProps> = async ({ lng }) => {
-  const { t } = await useTranslation(lng, 'footer');
+const ExtendedLogo: React.FC<ExtendedLogoProps> = (props) => {
+  const { lng } = props;
+  const { t } = useTranslation(lng, 'footer');
 
   return (
     <div className={styles.container}>

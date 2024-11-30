@@ -1,7 +1,9 @@
+'use client';
+
+import { useTranslation } from '../../app/i18n/client';
+import { country, post } from '../../utils/types';
 import DestinationsGrid from '../destinations/destinations-grid';
 import styles from './all-destinations.module.scss';
-import { post, country } from '../../utils/types';
-import { useTranslation } from '../../app/i18n';
 
 interface Props {
   destinations: post[];
@@ -9,9 +11,9 @@ interface Props {
   lng: string;
 }
 
-const AllDestinations: React.FC<Props> = async (props) => {
+const AllDestinations: React.FC<Props> = (props) => {
   const { destinations, country, lng } = props;
-  const { t } = await useTranslation(lng, 'common');
+  const { t } = useTranslation(lng, 'common');
 
   return (
     <>
