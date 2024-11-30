@@ -1,5 +1,5 @@
-import 'server-only';
 import { MongoClient } from 'mongodb';
+import 'server-only';
 import { commentData } from './types';
 
 export const connectDatabase = async () => {
@@ -17,5 +17,12 @@ export const insertDucument = async (client: MongoClient, collection: string, do
 export const getAllDocuments = async (client: MongoClient, collection: string, filter: {}, sort: {}) => {
   const db = client.db();
   const documents = await db.collection(collection).find(filter).sort(sort).toArray();
-  return documents as commentData[];
+
+  // Convert MongoDB documents to plain objects and transform _id to string
+  const plainDocuments = documents.map((doc) => ({
+    ...doc,
+    _id: doc._id.toString(), // Convert ObjectId to string
+  }));
+
+  return plainDocuments as unknown as commentData[];
 };
