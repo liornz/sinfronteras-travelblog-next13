@@ -17,19 +17,21 @@ import '../../../styles/globals.scss';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
-export const metadata: Metadata = {
-  title: 'Sin Fronteras - Video Travel Blog',
-  description:
-    'An Inspiring Video Travel Blog. I would like to inspire you and share with you my passion for culture and people from all over the world',
-  verification: {
-    google: 'l0w2h2JQOHdnGVdvB0UqUOHAon8XxS24IlkTFJOqXN0',
-  },
-  metadataBase: new URL('https://sinfronteras-travelblog.com/'),
-  formatDetection: {
-    telephone: false,
-  },
-  manifest: '/manifest.json',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Sin Fronteras - Video Travel Blog',
+    description:
+      'An Inspiring Video Travel Blog. I would like to inspire you and share with you my passion for culture and people from all over the world',
+    verification: {
+      google: 'l0w2h2JQOHdnGVdvB0UqUOHAon8XxS24IlkTFJOqXN0',
+    },
+    metadataBase: new URL('https://sinfronteras-travelblog.com/'),
+    formatDetection: {
+      telephone: false,
+    },
+    manifest: '/manifest.json',
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: 'black',

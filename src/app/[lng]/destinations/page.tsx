@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const AllCountriesPage: React.FC<Props> = async ({ params }) => {
-  const lng = (await params).lng;
+  const { lng } = await params;
   const countries = getAllCountriesData(lng);
   return <AllCountries lng={lng} countries={countries} />;
 };
