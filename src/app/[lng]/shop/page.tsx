@@ -1,10 +1,9 @@
-import Head from 'next/head';
+import { Metadata } from 'next';
 import React from 'react';
 import Shop from '../../../old_components/shop-page/shop';
-import { Metadata } from 'next';
 
 interface Props {
-  params: { lng: string };
+  params: Promise<{ lng: string }>;
 }
 
 export const metadata: Metadata = {
@@ -12,10 +11,8 @@ export const metadata: Metadata = {
   description: 'Shop - Sinfronteras Travel Blog - Cool items for inspiration!',
 };
 
-const ShopPage: React.FC<Props> = (props) => {
-  const {
-    params: { lng },
-  } = props;
+const ShopPage: React.FC<Props> = async ({ params }) => {
+  const lng = (await params).lng;
   return <Shop lng={lng} />;
 };
 

@@ -1,18 +1,21 @@
+'use client';
+
+import { useTranslation } from '../../app/i18n/client';
 import VideoCard from '../video-elements/video-card';
 import styles from './hero.module.scss';
-import { useTranslation } from '../../app/i18n';
 
 interface Props {
   lng: string;
 }
 
-const Hero: React.FC<Props> = async ({ lng }) => {
-  const { t } = await useTranslation(lng, 'common');
+const Hero: React.FC<Props> = (props) => {
+  const { lng } = props;
+  const { t } = useTranslation(lng, 'common');
 
   const aboutText = (
     <span className={styles.lead}>
-        <strong>{t('metitle')}</strong>
-        {t('metext')}
+      <strong>{t('metitle')}</strong>
+      {t('metext')}
     </span>
   );
 
