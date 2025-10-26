@@ -21,7 +21,7 @@ interface Props {
 const Map: React.FC<Props> = (props) => {
   const { location, width, height, zoom, minWidth, minHeight, google_api } = props;
   useEffect(() => {
-    // Set the API options for the new v2.0.1 API
+    // Set the API options for the new v2.0.1 API (only once globally)
     setOptions({
       key: google_api,
       v: 'weekly',
@@ -37,6 +37,8 @@ const Map: React.FC<Props> = (props) => {
         map: map,
         position: location,
       });
+    }).catch((error) => {
+      console.error('Google Maps API error:', error);
     });
   }, [google_api, location, zoom]);
 
