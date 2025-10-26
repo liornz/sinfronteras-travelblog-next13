@@ -9,9 +9,7 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = withPWA({
-  experimental: {
-    turbo: {},
-  },
+  turbopack: {},
   sassOptions: {
     api: 'modern-compiler',
     silenceDeprecations: ['legacy-js-api'],
