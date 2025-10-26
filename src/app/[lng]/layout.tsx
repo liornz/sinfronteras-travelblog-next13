@@ -1,12 +1,8 @@
 import { dir } from 'i18next';
 import type { Metadata, Viewport } from 'next';
 import { Lato } from 'next/font/google';
-import { languages } from '../i18n/settings';
 import './globals.css';
 
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
-}
 
 import Footer from '@/old_components/footer/footer';
 import SideDrawer from '@/old_components/layout/sideDrawer';

@@ -3,6 +3,7 @@ import FeaturedDestinations from '@/old_components/destinations/featured-destina
 import Hero from '@/old_components/home-page/hero';
 import VideoOpening from '@/old_components/home-page/video-opening';
 import { getAllCountriesData, getFeaturedDestinations } from '@/utils/data-utils';
+import { languages } from '../i18n/settings';
 
 interface Props {
   params: Promise<{ lng: string }>;
@@ -21,4 +22,8 @@ export default async function Page({ params }: Props) {
       <FeaturedDestinations destinations={featuredPosts} lng={lng} />
     </>
   );
+}
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
 }
