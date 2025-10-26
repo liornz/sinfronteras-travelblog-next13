@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import styles from './map.module.scss';
-import { Loader } from '@googlemaps/js-api-loader';
+import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 
 interface Props {
   location:
@@ -21,12 +21,15 @@ interface Props {
 const Map: React.FC<Props> = (props) => {
   const { location, width, height, zoom, minWidth, minHeight, google_api } = props;
   useEffect(() => {
-    const loader = new Loader({
-      apiKey: google_api,
-      version: 'weekly',
+    // Set the API options for the new v2.0.1 API
+    setOptions({
+      key: google_api,
+      v: 'weekly',
     });
-    loader.load().then(() => {
-      const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+
+    // Load the maps library using the new importLibrary function
+    importLibrary('maps').then(({ Map }) => {
+      const map = new Map(document.getElementById('map') as HTMLElement, {
         center: location,
         zoom: zoom,
       });
