@@ -127,7 +127,7 @@ importers:
         specifier: ^4.4.10
         version: 4.4.12(@types/react@18.2.45)
       sass:
-        specifier: ^1.69.5
+        specifier: ^1.93.2
         version: 1.93.2
 
 packages:
