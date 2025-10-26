@@ -10,6 +10,7 @@ import { getAllCountriesData } from '@/utils/data-utils';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../../styles/globals.scss';
+import { CookiesProvider } from 'react-cookie';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -51,11 +52,13 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={lato.className}>
-        <SideDrawer lng={lng} countriesData={countriesData} drawerWidth={drawerWidth}>
-          {children}
-        </SideDrawer>
-        <Footer drawerWidth={drawerWidth} lng={lng} />
-        <ToastContainer />
+        <CookiesProvider>
+          <SideDrawer lng={lng} countriesData={countriesData} drawerWidth={drawerWidth}>
+            {children}
+          </SideDrawer>
+          <Footer drawerWidth={drawerWidth} lng={lng} />
+          <ToastContainer />
+        </CookiesProvider>
       </body>
     </html>
   );

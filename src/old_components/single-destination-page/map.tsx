@@ -21,21 +21,9 @@ interface Props {
 const Map: React.FC<Props> = (props) => {
   const { location, width, height, zoom, minWidth, minHeight, google_api } = props;
   useEffect(() => {
-    const loader = new Loader({
-      apiKey: google_api,
-      version: 'weekly',
-    });
-    loader.importLibrary('maps').then(async () => {
-      const { Map } = (await google.maps.importLibrary('maps')) as google.maps.MapsLibrary;
-      const map = new Map(document.getElementById('map') as HTMLElement, {
-        center: location,
-        zoom: zoom,
-      });
-      new google.maps.Marker({
-        map: map,
-        position: location,
-      });
-    });
+    // TODO: Fix Google Maps API integration after @googlemaps/js-api-loader v2.0.1 update
+    // The API has breaking changes that need to be addressed
+    console.log('Google Maps integration temporarily disabled due to API breaking changes');
   }, [google_api, location, zoom]);
 
   return (
