@@ -90,16 +90,12 @@ export default function SideDrawer(props: Props) {
         ))}
         <Divider />
         <ListItem disablePadding>
-          <ListItemButton>
+          <Link href={lng === 'en' ? pathname.replace('/en', '/es') : pathname.replace('/es', '/en')} style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '8px 16px', textDecoration: 'none', color: 'inherit' }}>
             <ListItemIcon>
               <LanguageIcon />
             </ListItemIcon>
-            <Trans i18nKey="languageSwitcher" t={t}>
-              <Link href={lng === 'en' ? pathname.replace('/en', '/es') : pathname.replace('/es', '/en')}>
-                {lng === 'en' ? 'ESP' : 'ENG'}
-              </Link>
-            </Trans>
-          </ListItemButton>
+            {lng === 'en' ? 'ESP' : 'ENG'}
+          </Link>
         </ListItem>
       </List>
     </div>
