@@ -8,18 +8,26 @@ interface Props {
 }
 
 const getComments = async (countrySlug: string, destinationSlug: string) => {
-  const client = await connectDatabase();
-  const comments = await getAllDocuments(
-    client,
-    'comments',
-    {
-      countrySlug: countrySlug,
-      destinationSlug: destinationSlug,
-    },
-    { _id: -1 }
-  );
-  client.close();
-  return comments;
+  try {
+    const client = await connectDatabase();
+    const comments = await getAllDocuments(
+      client,
+      'comments',
+      {
+        countrySlug: countrySlug,
+        destinationSlug: destinationSlug,
+      },
+      { _id: -1 }
+    );
+    client.close();
+    return comments;
+    } catch (error) {
+    // Only log error if not in build environment or if it's a real error (not just network restriction during SSG)
+    if (process.env.NODE_ENV !== 'production' || (error as any).code !== 'ENOTFOUND') {
+      console.error('Failed to fetch comments from MongoDB:', error);
+    }
+    return []; // Return empty array if DB connection fails during build
+  }
 };
 
 const CommentsContainer: React.FC<Props> = async (props) => {
